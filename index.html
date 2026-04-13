@@ -10,13 +10,13 @@
   <style>
     :root{
       --navy:#0c1f2e;
-      --blue:#178fbe;
-      --green:#2d8d5a;
-      --orange:#df8b2f;
+      --blue:#1679a6;
+      --green:#2f8f5f;
+      --orange:#d9852c;
       --ink:#1a2733;
       --muted:#5f6b76;
       --line:#d8e1e8;
-      --soft:#f7f9fb;
+      --soft:#faf8f3;
       --white:#ffffff;
       --max:1180px;
     }
@@ -83,7 +83,7 @@
       object-fit:contain;
       border-radius:16px;
       background:#fff;
-      border:1px solid rgba(23,143,190,.12);
+      border:1px solid rgba(22,121,166,.12);
       padding:6px;
       box-shadow:0 8px 18px rgba(12,31,46,.06);
     }
@@ -92,8 +92,8 @@
       width:62px;
       height:62px;
       border-radius:16px;
-      background:linear-gradient(135deg, rgba(23,143,190,.12), rgba(45,141,90,.12));
-      border:1px solid rgba(23,143,190,.18);
+      background:linear-gradient(135deg, rgba(22,121,166,.12), rgba(47,143,95,.12));
+      border:1px solid rgba(22,121,166,.18);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -132,8 +132,8 @@
 
     .hero{
       background:
-        linear-gradient(120deg, rgba(12,31,46,.95) 0%, rgba(23,143,190,.90) 38%, rgba(45,141,90,.86) 70%, rgba(223,139,47,.78) 100%),
-        linear-gradient(135deg, #0c1f2e, #1a4460);
+        linear-gradient(120deg, rgba(12,31,46,.96) 0%, rgba(22,121,166,.84) 34%, rgba(47,143,95,.82) 68%, rgba(217,133,44,.74) 100%),
+        linear-gradient(135deg, #0c1f2e, #18364a);
       color:#fff;
       padding:92px 0 74px;
     }
@@ -195,8 +195,15 @@
       transition:.2s ease;
     }
 
-    .btn-primary{background:#fff;color:var(--navy)}
-    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-primary{
+      background:#fff;
+      color:var(--navy);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-1px);
+    }
+
     .btn-secondary{
       background:transparent;
       color:#fff;
@@ -243,7 +250,9 @@
       color:#e3eef8;
     }
 
-    .section{padding:74px 0}
+    .section{
+      padding:74px 0;
+    }
 
     .section-head{
       display:grid;
@@ -316,11 +325,21 @@
       color:var(--navy);
     }
 
-    .card p{margin:0;color:var(--muted);font-size:15px}
-    .card ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .card ul{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:15px;
+    }
 
     .feature-band{
-      background:linear-gradient(180deg, #f7fafb 0%, #f2f7f5 100%);
+      background:linear-gradient(180deg, #fbfcfc 0%, #f8f5ef 100%);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
@@ -347,11 +366,29 @@
       color:var(--navy);
     }
 
-    .feature-box p{margin:0 0 14px;color:var(--muted);font-size:16px}
+    .feature-box p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:16px;
+    }
 
-    .project-list{display:grid;gap:16px;margin-top:20px}
-    .project-item{border-top:1px solid var(--line);padding-top:16px}
-    .project-item strong{display:block;font-size:18px;color:var(--navy);margin-bottom:6px}
+    .project-list{
+      display:grid;
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .project-item{
+      border-top:1px solid var(--line);
+      padding-top:16px;
+    }
+
+    .project-item strong{
+      display:block;
+      font-size:18px;
+      color:var(--navy);
+      margin-bottom:6px;
+    }
 
     .water{color:var(--blue)}
     .food{color:var(--green)}
@@ -360,43 +397,53 @@
     .logos{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      gap:22px;
     }
 
     .partner-card{
       border:1px solid var(--line);
-      border-radius:20px;
-      background:#fff;
-      padding:24px;
-      min-height:180px;
+      border-radius:22px;
+      background:linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+      padding:28px 22px;
+      min-height:210px;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      gap:16px;
-      box-shadow:0 8px 20px rgba(12,31,46,.04);
+      gap:18px;
+      box-shadow:0 10px 28px rgba(12,31,46,.05);
       text-align:center;
+      transition:.22s ease;
+    }
+
+    .partner-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(12,31,46,.10);
     }
 
     .partner-card img{
-      max-height:74px;
+      max-height:78px;
+      max-width:180px;
       width:auto;
       object-fit:contain;
+      filter:contrast(1.02) saturate(1.02);
     }
 
     .partner-card h5{
       margin:0;
       font-size:18px;
+      line-height:1.2;
       color:var(--navy);
     }
 
     .partner-card span{
       font-size:13px;
       color:var(--muted);
+      line-height:1.5;
     }
 
     .cta{
-      background:linear-gradient(120deg, var(--navy), #153e59 44%, #17789a 76%, #2d8d5a 100%);
+      background:linear-gradient(120deg, var(--navy), #153e59 40%, #1a6d79 72%, #2f8f5f 100%);
       color:#fff;
       border-radius:28px;
       padding:36px;
@@ -413,8 +460,18 @@
       letter-spacing:-0.03em;
     }
 
-    .cta p{margin:0;color:#e1eef8;max-width:720px}
-    .cta-actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+    .cta p{
+      margin:0;
+      color:#e1eef8;
+      max-width:720px;
+    }
+
+    .cta-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+    }
 
     footer{
       background:#091521;
@@ -432,10 +489,25 @@
     }
 
     @media (max-width:980px){
-      .hero-grid,.section-head,.feature-grid,.cta{grid-template-columns:1fr}
-      .cards-3,.logos{grid-template-columns:1fr}
-      .nav-links{display:none}
-      .hero{padding:72px 0 56px}
+      .hero-grid,
+      .section-head,
+      .feature-grid,
+      .cta{
+        grid-template-columns:1fr;
+      }
+
+      .cards-3,
+      .logos{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero{
+        padding:72px 0 56px;
+      }
     }
   </style>
 </head>
@@ -614,15 +686,15 @@
       <div class="section-head">
         <div>
           <div class="kicker">Partenaires</div>
-          <h3>Des collaborations au service d’un impact partagé.</h3>
+          <h3>Des partenariats académiques et institutionnels au service d’un impact durable.</h3>
         </div>
         <p>
-          Nous collaborons avec des institutions universitaires, centres de recherche et organisations engagées dans l’innovation, la résilience communautaire et le développement durable.
+          Great Lakes Nexus collabore avec des institutions universitaires, centres de recherche et organisations engagées dans la résilience communautaire, la production de connaissances et le développement durable.
         </p>
       </div>
 
       <div class="logos">
-        <a class="partner-card" href="https://www.unigom.ac.cd/" target="_blank" rel="noopener noreferrer">
+        <a class="partner-card" href="https://www.unigom.ac.cd/fr/home" target="_blank" rel="noopener noreferrer">
           <img src="https://unigom.ac.cd/img/logo/lg1.png" alt="Logo UNIGOM">
           <h5>UNIGOM</h5>
           <span>Université de Goma</span>
@@ -631,7 +703,7 @@
         <a class="partner-card" href="https://africareconciled.com/" target="_blank" rel="noopener noreferrer">
           <img src="https://africareconciled.com/wp-content/uploads/2022/09/Logo-AR-New.png" alt="Logo Africa Reconciled">
           <h5>Africa Reconciled</h5>
-          <span>Paix, réconciliation et leadership</span>
+          <span>Organisation engagée dans la paix, la réconciliation et le leadership transformationnel</span>
         </a>
 
         <a class="partner-card" href="https://creds-drc.org/" target="_blank" rel="noopener noreferrer">
