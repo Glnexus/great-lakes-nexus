@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --navy:#0c1f2e;
@@ -16,7 +17,8 @@
       --ink:#1a2733;
       --muted:#5f6b76;
       --line:#d8e1e8;
-      --soft:#faf8f3;
+      --soft:#f8f5ef;
+      --soft2:#f7fbfc;
       --white:#ffffff;
       --max:1180px;
     }
@@ -31,8 +33,15 @@
       line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
 
     .container{
       width:min(var(--max), calc(100% - 32px));
@@ -83,23 +92,9 @@
       object-fit:contain;
       border-radius:16px;
       background:#fff;
-      border:1px solid rgba(22,121,166,.12);
+      border:1px solid rgba(22,121,166,.10);
       padding:6px;
       box-shadow:0 8px 18px rgba(12,31,46,.06);
-    }
-
-    .brand-mark{
-      width:62px;
-      height:62px;
-      border-radius:16px;
-      background:linear-gradient(135deg, rgba(22,121,166,.12), rgba(47,143,95,.12));
-      border:1px solid rgba(22,121,166,.18);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-      color:var(--blue);
-      font-size:18px;
       flex-shrink:0;
     }
 
@@ -128,7 +123,9 @@
       justify-content:flex-end;
     }
 
-    .nav-links a:hover{color:var(--blue)}
+    .nav-links a:hover{
+      color:var(--blue);
+    }
 
     .hero{
       background:
@@ -251,7 +248,23 @@
     }
 
     .section{
-      padding:74px 0;
+      padding:78px 0;
+    }
+
+    .section-white{
+      background:#fff;
+    }
+
+    .section-soft{
+      background:linear-gradient(180deg, #fbfcfc 0%, #f8f5ef 100%);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-blue-soft{
+      background:linear-gradient(180deg, #f7fbfc 0%, #f2f7fa 100%);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
     }
 
     .section-head{
@@ -259,7 +272,7 @@
       grid-template-columns:1fr .85fr;
       gap:22px;
       align-items:end;
-      margin-bottom:30px;
+      margin-bottom:34px;
     }
 
     .kicker{
@@ -331,20 +344,7 @@
       font-size:15px;
     }
 
-    .card ul{
-      margin:14px 0 0;
-      padding-left:18px;
-      color:var(--muted);
-      font-size:15px;
-    }
-
-    .feature-band{
-      background:linear-gradient(180deg, #fbfcfc 0%, #f8f5ef 100%);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-    }
-
-    .feature-grid{
+    .split-2{
       display:grid;
       grid-template-columns:1.05fr .95fr;
       gap:28px;
@@ -356,6 +356,7 @@
       border:1px solid var(--line);
       border-radius:24px;
       padding:30px;
+      box-shadow:0 8px 20px rgba(12,31,46,.03);
     }
 
     .feature-box h4{
@@ -372,6 +373,13 @@
       font-size:16px;
     }
 
+    .feature-box ul{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
     .project-list{
       display:grid;
       gap:16px;
@@ -386,7 +394,6 @@
     .project-item strong{
       display:block;
       font-size:18px;
-      color:var(--navy);
       margin-bottom:6px;
     }
 
@@ -426,7 +433,6 @@
       max-width:180px;
       width:auto;
       object-fit:contain;
-      filter:contrast(1.02) saturate(1.02);
     }
 
     .partner-card h5{
@@ -477,7 +483,6 @@
       background:#091521;
       color:#c8d5e2;
       padding:26px 0;
-      margin-top:72px;
       font-size:14px;
     }
 
@@ -491,7 +496,7 @@
     @media (max-width:980px){
       .hero-grid,
       .section-head,
-      .feature-grid,
+      .split-2,
       .cta{
         grid-template-columns:1fr;
       }
@@ -523,7 +528,7 @@
   <nav class="navbar">
     <div class="container nav-inner">
       <div class="brand">
-        <div class="brand-mark">GLN</div>
+        <img src="Logo.jpeg" class="brand-logo" alt="Logo Great Lakes Nexus">
         <div class="brand-text">
           <h1>Great Lakes Nexus</h1>
           <p>Au cœur des communautés, pour des solutions durables</p>
@@ -550,7 +555,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://wa.me/243993109325" target="_blank">Contacter l’équipe</a>
-          <a class="btn btn-secondary" href="#projects">Voir nos programmes</a>
+          <a class="btn btn-secondary" href="#mission">Découvrir notre mission</a>
         </div>
       </div>
 
@@ -578,7 +583,7 @@
     </div>
   </header>
 
-  <section class="section" id="mission">
+  <section class="section section-white" id="mission">
     <div class="container">
       <div class="section-head">
         <div>
@@ -612,42 +617,53 @@
     </div>
   </section>
 
-  <section class="section feature-band" id="services">
-    <div class="container feature-grid">
-      <div class="feature-box">
-        <div class="kicker">Expertises</div>
-        <h4>Nos domaines d’intervention</h4>
-        <div class="project-list">
-          <div class="project-item">
-            <strong class="water">Water</strong>
-            <div>Gestion de l’eau, résilience hydrique, services WASH, approches communautaires et adaptation locale.</div>
-          </div>
-          <div class="project-item">
-            <strong class="food">Food</strong>
-            <div>Agriculture urbaine et périurbaine, sécurité alimentaire, nutrition, systèmes productifs durables et valorisation locale.</div>
-          </div>
-          <div class="project-item">
-            <strong class="energy">Energy</strong>
-            <div>Solutions énergétiques adaptées, innovation locale, nexus climat-énergie et approches de résilience.</div>
-          </div>
+  <section class="section section-soft" id="services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Expertises</div>
+          <h3>Nos domaines d’intervention</h3>
         </div>
+        <p>
+          Une approche intersectorielle qui relie eau, alimentation, énergie, résilience communautaire et production de connaissances utiles à l’action.
+        </p>
       </div>
 
-      <div class="feature-box">
-        <div class="kicker">Valeur ajoutée</div>
-        <h4>Pourquoi travailler avec Great Lakes Nexus</h4>
-        <ul>
-          <li>Approche intersectorielle Water–Food–Energy.</li>
-          <li>Forte orientation communautaire et opérationnelle.</li>
-          <li>Capacité à articuler terrain, données et stratégie.</li>
-          <li>Positionnement adapté aux contextes fragiles et urbains.</li>
-          <li>Production de solutions réalistes, utiles et durables.</li>
-        </ul>
+      <div class="split-2">
+        <div class="feature-box">
+          <div class="project-list">
+            <div class="project-item">
+              <strong class="water">Water</strong>
+              <div>Gestion de l’eau, résilience hydrique, services WASH, approches communautaires et adaptation locale.</div>
+            </div>
+
+            <div class="project-item">
+              <strong class="food">Food</strong>
+              <div>Agriculture urbaine et périurbaine, sécurité alimentaire, nutrition, systèmes productifs durables et valorisation locale.</div>
+            </div>
+
+            <div class="project-item">
+              <strong class="energy">Energy</strong>
+              <div>Solutions énergétiques adaptées, innovation locale, nexus climat-énergie et approches de résilience.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <h4>Pourquoi travailler avec Great Lakes Nexus</h4>
+          <ul>
+            <li>Approche intersectorielle Water–Food–Energy.</li>
+            <li>Forte orientation communautaire et opérationnelle.</li>
+            <li>Capacité à articuler terrain, données et stratégie.</li>
+            <li>Positionnement adapté aux contextes fragiles et urbains.</li>
+            <li>Production de solutions réalistes, utiles et durables.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="projects">
+  <section class="section section-white" id="projects">
     <div class="container">
       <div class="section-head">
         <div>
@@ -681,7 +697,7 @@
     </div>
   </section>
 
-  <section class="section feature-band" id="partners">
+  <section class="section section-blue-soft" id="partners">
     <div class="container">
       <div class="section-head">
         <div>
@@ -715,14 +731,17 @@
     </div>
   </section>
 
-  <section class="section" id="contact">
+  <section class="section section-white" id="contact">
     <div class="container">
       <div class="cta">
         <div>
           <div class="kicker" style="color:#b8f0d2">Contact</div>
           <h4>Discutons de votre projet, programme ou besoin d’appui technique.</h4>
-          <p>Pour une prise de contact rapide, utilisez WhatsApp. Nous pouvons ensuite structurer les échanges autour de votre besoin, de vos objectifs et de votre contexte d’intervention.</p>
+          <p>
+            Pour une prise de contact rapide, utilisez WhatsApp. Nous pouvons ensuite structurer les échanges autour de votre besoin, de vos objectifs et de votre contexte d’intervention.
+          </p>
         </div>
+
         <div class="cta-actions">
           <a class="btn btn-primary" href="https://wa.me/243993109325" target="_blank">Écrire sur WhatsApp</a>
           <a class="btn btn-secondary" href="mailto:contact@greatlakesnexus.org">Préparer l’email institutionnel</a>
