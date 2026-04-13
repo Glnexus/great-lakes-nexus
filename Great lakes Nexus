@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Great Lakes Nexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family: Arial; margin:0; padding:0;">
+
+<header style="background:#0f172a; color:white; padding:20px;">
+  <h1>Great Lakes Nexus</h1>
+  <p>Au cœur des communautés, pour des solutions durables</p>
+</header>
+
+<section style="padding:40px;">
+  <h2>Nos services</h2>
+  <ul>
+    <li>Consultance Water – Food – Energy</li>
+    <li>Formation & renforcement des capacités</li>
+    <li>Recherche appliquée</li>
+  </ul>
+</section>
+
+<section style="padding:40px; background:#f1f5f9;">
+  <h2>Projets</h2>
+  <p><strong>Urban Oasis</strong> – Agriculture urbaine à Goma</p>
+  <p><strong>Formation champignons</strong> – Autonomisation des communautés</p>
+</section>
+
+<section style="padding:40px;">
+  <h2>Contact</h2>
+  <a href="https://wa.me/243993109325">Contact WhatsApp</a>
+</section>
+
+</body>
+</html>
