@@ -4,23 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Great Lakes Nexus</title>
+  <meta name="description" content="Great Lakes Nexus – Solutions communautaires et institutionnelles en Water, Food, Energy, recherche appliquée et renforcement des capacités." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{
-      --navy:#0c1f2e;
-      --blue:#1679a6;
+      --navy:#071827;
+      --navy-2:#0b2235;
+      --blue:#1480b8;
+      --blue-2:#1c5d9b;
       --green:#2f8f5f;
-      --orange:#d9852c;
-      --ink:#1a2733;
-      --muted:#5f6b76;
-      --line:#d8e1e8;
-      --soft:#f8f5ef;
-      --soft2:#f7fbfc;
+      --green-2:#1f6f49;
+      --orange:#d98a2b;
+      --orange-2:#b96d16;
+      --ink:#13202d;
+      --muted:#5f6e7c;
+      --line:#dbe5eb;
+      --soft:#f7fbfc;
+      --soft-warm:#faf6ef;
       --white:#ffffff;
-      --max:1180px;
+      --shadow-sm:0 8px 20px rgba(7,24,39,.05);
+      --shadow-md:0 18px 44px rgba(7,24,39,.10);
+      --radius:22px;
+      --max:1220px;
     }
 
     *{box-sizing:border-box}
@@ -30,18 +37,13 @@
       font-family:'Inter',sans-serif;
       color:var(--ink);
       background:var(--white);
-      line-height:1.6;
+      line-height:1.65;
+      overflow-x:hidden;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea,select{font:inherit}
 
     .container{
       width:min(var(--max), calc(100% - 32px));
@@ -50,25 +52,36 @@
 
     .topbar{
       background:var(--navy);
-      color:#deebf5;
+      color:#d7e6f1;
       font-size:13px;
       padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
     .topbar-inner{
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:14px;
       flex-wrap:wrap;
     }
 
+    .topbar-list{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .topbar-list span{opacity:.92}
+
     .navbar{
-      background:#fff;
-      border-bottom:1px solid var(--line);
       position:sticky;
       top:0;
-      z-index:50;
-      box-shadow:0 2px 14px rgba(12,31,46,.04);
+      z-index:100;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(19,32,45,.08);
     }
 
     .nav-inner{
@@ -76,7 +89,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+      gap:24px;
     }
 
     .brand{
@@ -87,92 +100,165 @@
     }
 
     .brand-logo{
-      width:62px;
-      height:62px;
+      width:64px;
+      height:64px;
       object-fit:contain;
-      border-radius:16px;
       background:#fff;
-      border:1px solid rgba(22,121,166,.10);
+      border-radius:18px;
+      border:1px solid rgba(20,128,184,.10);
       padding:6px;
-      box-shadow:0 8px 18px rgba(12,31,46,.06);
+      box-shadow:var(--shadow-sm);
       flex-shrink:0;
+    }
+
+    .brand-text{
+      min-width:0;
     }
 
     .brand-text h1{
       margin:0;
       font-size:22px;
-      line-height:1.05;
+      line-height:1.02;
+      letter-spacing:-0.03em;
       color:var(--navy);
-      letter-spacing:-0.02em;
     }
 
     .brand-text p{
-      margin:5px 0 0;
-      font-size:13px;
+      margin:6px 0 0;
       color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:320px;
     }
 
     .nav-links{
       display:flex;
       align-items:center;
-      gap:24px;
-      font-size:14px;
-      color:#294055;
-      font-weight:600;
+      gap:22px;
       flex-wrap:wrap;
-      justify-content:flex-end;
+      color:#284154;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .nav-links a{
+      position:relative;
+      transition:.25s ease;
+    }
+
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:0;
+      height:2px;
+      background:linear-gradient(90deg,var(--blue),var(--green));
+      transition:.25s ease;
     }
 
     .nav-links a:hover{
       color:var(--blue);
     }
 
-    .hero{
-      background:
-        linear-gradient(120deg, rgba(12,31,46,.96) 0%, rgba(22,121,166,.84) 34%, rgba(47,143,95,.82) 68%, rgba(217,133,44,.74) 100%),
-        linear-gradient(135deg, #0c1f2e, #18364a);
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:14px;
       color:#fff;
-      padding:92px 0 74px;
+      font-size:14px;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--blue-2),var(--blue));
+      box-shadow:0 12px 26px rgba(28,93,155,.22);
+      transition:.25s ease;
+    }
+
+    .nav-cta:hover{transform:translateY(-2px)}
+
+    .hero{
+      position:relative;
+      color:#fff;
+      background:
+        linear-gradient(120deg, rgba(7,24,39,.93) 0%, rgba(20,128,184,.80) 34%, rgba(47,143,95,.78) 68%, rgba(217,138,43,.64) 100%),
+        radial-gradient(circle at top left, rgba(255,255,255,.09), transparent 26%),
+        linear-gradient(135deg, #081a2b, #13334a);
+      overflow:hidden;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:'';
+      position:absolute;
+      border-radius:999px;
+      filter:blur(10px);
+      opacity:.35;
+      pointer-events:none;
+    }
+
+    .hero::before{
+      width:340px;
+      height:340px;
+      background:rgba(255,255,255,.09);
+      top:-120px;
+      right:-90px;
+    }
+
+    .hero::after{
+      width:220px;
+      height:220px;
+      background:rgba(255,255,255,.08);
+      bottom:-80px;
+      left:-50px;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.24fr .96fr;
-      gap:42px;
-      align-items:end;
+      grid-template-columns:1.18fr .82fr;
+      gap:34px;
+      align-items:center;
+      padding:94px 0 84px;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border:1px solid rgba(255,255,255,.18);
+      gap:10px;
+      padding:9px 14px;
       border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
       background:rgba(255,255,255,.08);
       font-size:12px;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      letter-spacing:.12em;
-      font-weight:700;
+      font-weight:800;
     }
 
     .hero h2{
       margin:18px 0 18px;
-      font-size:clamp(36px, 6vw, 60px);
-      line-height:1.02;
-      letter-spacing:-0.04em;
-      max-width:820px;
+      font-size:clamp(38px, 6vw, 66px);
+      line-height:1.01;
+      letter-spacing:-0.05em;
+      max-width:860px;
     }
 
-    .hero p.lead{
+    .hero .lead{
       margin:0;
-      font-size:18px;
-      color:#eef5fb;
       max-width:760px;
+      color:#edf6fb;
+      font-size:18px;
     }
 
     .hero-actions{
-      margin-top:28px;
+      margin-top:30px;
       display:flex;
       gap:14px;
       flex-wrap:wrap;
@@ -183,44 +269,63 @@
       align-items:center;
       justify-content:center;
       gap:10px;
-      min-height:50px;
+      min-height:52px;
       padding:0 22px;
-      border-radius:12px;
-      font-weight:700;
+      border-radius:14px;
+      font-weight:800;
       font-size:15px;
+      transition:.25s ease;
       border:1px solid transparent;
-      transition:.2s ease;
+      cursor:pointer;
     }
 
     .btn-primary{
       background:#fff;
       color:var(--navy);
+      box-shadow:0 14px 30px rgba(7,24,39,.18);
     }
 
     .btn-primary:hover{
-      transform:translateY(-1px);
+      transform:translateY(-2px);
+      background:#f8fbfd;
     }
 
     .btn-secondary{
-      background:transparent;
       color:#fff;
-      border-color:rgba(255,255,255,.25);
+      background:transparent;
+      border-color:rgba(255,255,255,.28);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-2px);
+    }
+
+    .btn-dark{
+      background:linear-gradient(135deg,var(--blue-2),var(--blue));
+      color:#fff;
+      box-shadow:0 12px 26px rgba(28,93,155,.18);
+    }
+
+    .btn-dark:hover{
+      transform:translateY(-2px);
     }
 
     .hero-panel{
       background:rgba(255,255,255,.10);
       border:1px solid rgba(255,255,255,.16);
-      border-radius:22px;
+      border-radius:26px;
       padding:24px;
-      backdrop-filter:blur(10px);
+      backdrop-filter:blur(12px);
+      box-shadow:0 18px 40px rgba(7,24,39,.12);
     }
 
     .hero-panel h3{
       margin:0 0 14px;
       font-size:15px;
-      text-transform:uppercase;
       letter-spacing:.08em;
-      color:#e7f2fb;
+      text-transform:uppercase;
+      color:#e6f2fb;
     }
 
     .hero-metrics{
@@ -231,46 +336,54 @@
 
     .metric{
       background:rgba(255,255,255,.08);
-      border-radius:16px;
-      padding:16px;
+      border-radius:18px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.06);
+      transition:.25s ease;
+    }
+
+    .metric:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,.11);
     }
 
     .metric strong{
       display:block;
-      font-size:28px;
+      font-size:30px;
       line-height:1;
-      margin-bottom:6px;
+      margin-bottom:8px;
     }
 
     .metric span{
       font-size:13px;
-      color:#e3eef8;
+      color:#e7f2fb;
     }
 
     .section{
-      padding:78px 0;
+      padding:86px 0;
+      position:relative;
     }
 
-    .section-white{
-      background:#fff;
-    }
-
+    .section-white{background:#fff}
     .section-soft{
       background:linear-gradient(180deg, #fbfcfc 0%, #f8f5ef 100%);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
-
     .section-blue-soft{
-      background:linear-gradient(180deg, #f7fbfc 0%, #f2f7fa 100%);
+      background:linear-gradient(180deg, #f7fbfc 0%, #f1f8fb 100%);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
+    }
+    .section-dark{
+      background:linear-gradient(180deg, #071827 0%, #0c2235 100%);
+      color:#fff;
     }
 
     .section-head{
       display:grid;
-      grid-template-columns:1fr .85fr;
-      gap:22px;
+      grid-template-columns:1fr .84fr;
+      gap:24px;
       align-items:end;
       margin-bottom:34px;
     }
@@ -278,18 +391,24 @@
     .kicker{
       color:var(--blue);
       font-size:12px;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      letter-spacing:.12em;
-      font-weight:800;
-      margin-bottom:10px;
+      font-weight:900;
+      margin-bottom:12px;
     }
 
     .section h3{
       margin:0;
-      font-size:clamp(28px,4vw,42px);
-      line-height:1.08;
-      letter-spacing:-0.03em;
+      font-size:clamp(30px,4vw,46px);
+      line-height:1.06;
+      letter-spacing:-0.04em;
       color:var(--navy);
+    }
+
+    .section-dark h3,
+    .section-dark .section-head p,
+    .section-dark .governance-role{
+      color:#fff;
     }
 
     .section-head p{
@@ -307,24 +426,36 @@
     .card{
       background:#fff;
       border:1px solid var(--line);
-      border-radius:20px;
-      padding:26px;
-      transition:.22s ease;
-      box-shadow:0 8px 20px rgba(12,31,46,.04);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:var(--shadow-sm);
+      transition:.25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:4px;
+      background:linear-gradient(90deg,var(--blue),var(--green),var(--orange));
+      opacity:.85;
     }
 
     .card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 18px 44px rgba(15,23,42,.08);
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-md);
     }
 
     .card .tag{
       display:inline-block;
       font-size:12px;
-      font-weight:800;
+      font-weight:900;
       text-transform:uppercase;
-      letter-spacing:.1em;
-      margin-bottom:10px;
+      letter-spacing:.11em;
+      margin-bottom:12px;
     }
 
     .service-water .tag{color:var(--blue)}
@@ -334,7 +465,7 @@
     .card h4{
       margin:0 0 12px;
       font-size:22px;
-      line-height:1.2;
+      line-height:1.18;
       color:var(--navy);
     }
 
@@ -354,9 +485,9 @@
     .feature-box{
       background:#fff;
       border:1px solid var(--line);
-      border-radius:24px;
-      padding:30px;
-      box-shadow:0 8px 20px rgba(12,31,46,.03);
+      border-radius:26px;
+      padding:32px;
+      box-shadow:var(--shadow-sm);
     }
 
     .feature-box h4{
@@ -383,13 +514,15 @@
     .project-list{
       display:grid;
       gap:16px;
-      margin-top:20px;
+      margin-top:8px;
     }
 
     .project-item{
       border-top:1px solid var(--line);
       padding-top:16px;
     }
+
+    .project-item:first-child{border-top:none;padding-top:0}
 
     .project-item strong{
       display:block;
@@ -401,6 +534,101 @@
     .food{color:var(--green)}
     .energy{color:var(--orange)}
 
+    .impact-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .impact-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:26px;
+      box-shadow:var(--shadow-sm);
+      text-align:center;
+      transition:.25s ease;
+    }
+
+    .impact-box:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-md);
+    }
+
+    .impact-icon{
+      width:56px;
+      height:56px;
+      margin:0 auto 16px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      font-weight:900;
+      color:#fff;
+    }
+
+    .impact-box:nth-child(1) .impact-icon{background:linear-gradient(135deg,var(--blue-2),var(--blue))}
+    .impact-box:nth-child(2) .impact-icon{background:linear-gradient(135deg,var(--green-2),var(--green))}
+    .impact-box:nth-child(3) .impact-icon{background:linear-gradient(135deg,var(--orange-2),var(--orange))}
+    .impact-box:nth-child(4) .impact-icon{background:linear-gradient(135deg,var(--navy-2),var(--blue-2))}
+
+    .impact-box h4{
+      margin:0 0 8px;
+      font-size:18px;
+      color:var(--navy);
+    }
+
+    .impact-box p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .governance-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+      margin-top:16px;
+    }
+
+    .governance-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:18px;
+      transition:.25s ease;
+    }
+
+    .governance-card:hover{
+      transform:translateY(-5px);
+      background:rgba(255,255,255,.06);
+    }
+
+    .governance-photo{
+      aspect-ratio:1/1.1;
+      border-radius:18px;
+      background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.06);
+      margin-bottom:14px;
+    }
+
+    .governance-name{
+      margin:0;
+      font-size:17px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .governance-role{
+      margin-top:4px;
+      color:#c7d7e4;
+      font-size:12px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
     .logos{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -409,28 +637,28 @@
 
     .partner-card{
       border:1px solid var(--line);
-      border-radius:22px;
+      border-radius:24px;
       background:linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
       padding:28px 22px;
-      min-height:210px;
+      min-height:220px;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
       gap:18px;
-      box-shadow:0 10px 28px rgba(12,31,46,.05);
+      box-shadow:var(--shadow-sm);
       text-align:center;
-      transition:.22s ease;
+      transition:.25s ease;
     }
 
     .partner-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 18px 40px rgba(12,31,46,.10);
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-md);
     }
 
     .partner-card img{
-      max-height:78px;
-      max-width:180px;
+      max-height:82px;
+      max-width:185px;
       width:auto;
       object-fit:contain;
     }
@@ -448,71 +676,260 @@
       line-height:1.5;
     }
 
-    .cta{
-      background:linear-gradient(120deg, var(--navy), #153e59 40%, #1a6d79 72%, #2f8f5f 100%);
-      color:#fff;
+    .contact-panel{
+      background:#fff;
+      border:1px solid var(--line);
       border-radius:28px;
-      padding:36px;
+      padding:34px;
+      box-shadow:var(--shadow-md);
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:24px;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
       align-items:center;
     }
 
-    .cta h4{
-      margin:0 0 12px;
+    .contact-info h4{
+      margin:0 0 14px;
       font-size:34px;
       line-height:1.08;
       letter-spacing:-0.03em;
+      color:var(--navy);
     }
 
-    .cta p{
+    .contact-info p{
+      margin:0 0 20px;
+      color:var(--muted);
+    }
+
+    .contact-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .contact-form{
+      display:grid;
+      gap:14px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .field{
+      width:100%;
+      min-height:52px;
+      padding:14px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--ink);
+      outline:none;
+      transition:.2s ease;
+    }
+
+    .field:focus{
+      border-color:rgba(20,128,184,.5);
+      box-shadow:0 0 0 4px rgba(20,128,184,.08);
+    }
+
+    textarea.field{
+      min-height:124px;
+      resize:vertical;
+    }
+
+    .footer{
+      background:linear-gradient(180deg, #04111c 0%, #071827 100%);
+      color:#d7e4ef;
+      padding:84px 0 26px;
+      position:relative;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr .95fr .9fr;
+      gap:30px;
+      padding-bottom:34px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .footer-col h4{
+      margin:0 0 18px;
+      font-size:18px;
+      color:#fff;
+      position:relative;
+      padding-left:14px;
+    }
+
+    .footer-col h4::before{
+      content:'';
+      position:absolute;
+      left:0;
+      top:4px;
+      width:4px;
+      height:26px;
+      border-radius:999px;
+      background:linear-gradient(180deg,var(--blue),var(--green));
+    }
+
+    .footer-col p,
+    .footer-col li,
+    .footer-col a,
+    .footer-col span{
+      color:#b8cad8;
+      font-size:15px;
+    }
+
+    .footer-col a{
+      transition:.2s ease;
+    }
+
+    .footer-col a:hover{
+      color:#fff;
+      transform:translateX(2px);
+    }
+
+    .footer-links{
+      list-style:none;
       margin:0;
-      color:#e1eef8;
-      max-width:720px;
+      padding:0;
+      display:grid;
+      gap:12px;
     }
 
-    .cta-actions{
+    .footer-label{
+      display:block;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:800;
+      color:#7fa2bd !important;
+      margin:0 0 8px;
+    }
+
+    .socials{
       display:flex;
-      justify-content:flex-end;
       gap:12px;
       flex-wrap:wrap;
+      margin-top:8px;
     }
 
-    footer{
-      background:#091521;
-      color:#c8d5e2;
-      padding:26px 0;
-      font-size:14px;
+    .social{
+      width:52px;
+      height:52px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+      font-size:18px;
+      font-weight:800;
+      transition:.25s ease;
     }
 
-    .footer-inner{
+    .social:hover{
+      transform:translateY(-4px);
+      background:linear-gradient(135deg,var(--blue-2),var(--blue));
+      box-shadow:0 12px 22px rgba(20,128,184,.24);
+    }
+
+    .footer-bottom{
+      padding-top:22px;
       display:flex;
       justify-content:space-between;
       gap:14px;
       flex-wrap:wrap;
+      color:#91a7b8;
+      font-size:14px;
     }
 
-    @media (max-width:980px){
+    .footer-bottom-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .back-top{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      width:56px;
+      height:56px;
+      border:none;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--blue-2),var(--blue));
+      color:#fff;
+      font-size:22px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 16px 28px rgba(20,128,184,.26);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      transition:.25s ease;
+      z-index:99;
+    }
+
+    .back-top.show{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+    }
+
+    .back-top:hover{
+      transform:translateY(-3px);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width:1080px){
       .hero-grid,
       .section-head,
       .split-2,
-      .cta{
+      .contact-panel,
+      .footer-grid{
         grid-template-columns:1fr;
       }
 
       .cards-3,
-      .logos{
+      .logos,
+      .impact-grid,
+      .governance-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:760px){
+      .nav-links{display:none}
+      .hero-grid{padding:74px 0 62px}
+      .cards-3,
+      .logos,
+      .impact-grid,
+      .governance-grid,
+      .form-grid,
+      .hero-metrics{
         grid-template-columns:1fr;
       }
 
-      .nav-links{
-        display:none;
-      }
-
-      .hero{
-        padding:72px 0 56px;
-      }
+      .brand-text p{max-width:220px}
+      .section{padding:68px 0}
+      .contact-panel{padding:26px}
+      .footer{padding-top:68px}
+      .back-top{right:18px;bottom:18px}
     }
   </style>
 </head>
@@ -520,8 +937,16 @@
 
   <div class="topbar">
     <div class="container topbar-inner">
-      <div>Great Lakes Nexus · Solutions communautaires fondées sur l’évidence</div>
-      <div>Water · Food · Energy · Research · Capacity Building</div>
+      <div class="topbar-list">
+        <span>Great Lakes Nexus · Solutions communautaires fondées sur l’évidence</span>
+      </div>
+      <div class="topbar-list">
+        <span>Water</span>
+        <span>Food</span>
+        <span>Energy</span>
+        <span>Research</span>
+        <span>Capacity Building</span>
+      </div>
     </div>
   </div>
 
@@ -539,19 +964,21 @@
         <a href="#mission">Mission</a>
         <a href="#services">Expertises</a>
         <a href="#projects">Programmes</a>
+        <a href="#impact">Impact</a>
         <a href="#partners">Partenaires</a>
         <a href="#contact">Contact</a>
+        <a href="https://wa.me/243993109325" target="_blank" class="nav-cta">Nous écrire</a>
       </div>
     </div>
   </nav>
 
   <header class="hero">
     <div class="container hero-grid">
-      <div>
+      <div class="reveal visible">
         <div class="eyebrow">Approche intégrée · Water Food Energy Nexus</div>
         <h2>Des solutions institutionnelles et communautaires pour l’eau, l’alimentation et l’énergie durables.</h2>
         <p class="lead">
-          Great Lakes Nexus accompagne les communautés, organisations et partenaires de développement à travers la consultance, la recherche appliquée et le renforcement des capacités dans les domaines de l’eau, de l’alimentation, de l’énergie et de l’adaptation climatique.
+          Great Lakes Nexus accompagne les communautés, organisations, universités, centres de recherche et partenaires de développement à travers la consultance, la recherche appliquée et le renforcement des capacités.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://wa.me/243993109325" target="_blank">Contacter l’équipe</a>
@@ -559,24 +986,24 @@
         </div>
       </div>
 
-      <aside class="hero-panel">
+      <aside class="hero-panel reveal visible">
         <h3>Axes d’intervention</h3>
         <div class="hero-metrics">
           <div class="metric">
             <strong>W</strong>
-            <span>Water systems, WASH et résilience hydrique</span>
+            <span>Water systems, WASH et résilience hydrique.</span>
           </div>
           <div class="metric">
             <strong>F</strong>
-            <span>Sécurité alimentaire, agriculture urbaine et nutrition</span>
+            <span>Sécurité alimentaire, agriculture urbaine et nutrition.</span>
           </div>
           <div class="metric">
             <strong>E</strong>
-            <span>Énergie, innovation locale et adaptation</span>
+            <span>Énergie, innovation locale et adaptation climatique.</span>
           </div>
           <div class="metric">
             <strong>R</strong>
-            <span>Recherche appliquée, données et formation</span>
+            <span>Recherche appliquée, données et formation.</span>
           </div>
         </div>
       </aside>
@@ -585,30 +1012,30 @@
 
   <section class="section section-white" id="mission">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div>
           <div class="kicker">Mission</div>
           <h3>Une structure orientée impact, ancrée dans les réalités locales.</h3>
         </div>
         <p>
-          Nous développons des réponses intégrées aux défis communautaires en combinant expertise technique, co-construction locale, innovation adaptée au contexte et approche fondée sur des preuves.
+          Nous développons des réponses intégrées aux défis communautaires en combinant expertise technique, innovation adaptée au contexte, co-construction avec les parties prenantes et approche fondée sur des preuves.
         </p>
       </div>
 
       <div class="cards-3">
-        <article class="card service-water">
+        <article class="card service-water reveal">
           <div class="tag">Water</div>
           <h4>Conseil stratégique et technique</h4>
-          <p>Appui aux organisations, collectivités, partenaires et programmes pour la conception, la mise en œuvre et l’amélioration d’interventions à fort impact.</p>
+          <p>Appui aux organisations, programmes et collectivités pour la conception, la mise en œuvre et l’amélioration d’interventions à fort impact.</p>
         </article>
 
-        <article class="card service-food">
+        <article class="card service-food reveal">
           <div class="tag">Food</div>
           <h4>Renforcement des capacités</h4>
           <p>Formations pratiques et institutionnelles destinées aux communautés, jeunes, femmes, techniciens et acteurs territoriaux.</p>
         </article>
 
-        <article class="card service-energy">
+        <article class="card service-energy reveal">
           <div class="tag">Energy</div>
           <h4>Recherche appliquée</h4>
           <p>Production de connaissances utiles à la décision, expérimentation locale et valorisation scientifique des innovations adaptées aux contextes fragiles.</p>
@@ -619,29 +1046,27 @@
 
   <section class="section section-soft" id="services">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div>
           <div class="kicker">Expertises</div>
           <h3>Nos domaines d’intervention</h3>
         </div>
         <p>
-          Une approche intersectorielle qui relie eau, alimentation, énergie, résilience communautaire et production de connaissances utiles à l’action.
+          Une approche intersectorielle qui relie eau, alimentation, énergie, résilience communautaire, systèmes productifs durables et production de connaissances utiles à l’action.
         </p>
       </div>
 
       <div class="split-2">
-        <div class="feature-box">
+        <div class="feature-box reveal">
           <div class="project-list">
             <div class="project-item">
               <strong class="water">Water</strong>
-              <div>Gestion de l’eau, résilience hydrique, services WASH, approches communautaires et adaptation locale.</div>
+              <div>Gestion de l’eau, résilience hydrique, services WASH, adaptation locale et dispositifs communautaires.</div>
             </div>
-
             <div class="project-item">
               <strong class="food">Food</strong>
               <div>Agriculture urbaine et périurbaine, sécurité alimentaire, nutrition, systèmes productifs durables et valorisation locale.</div>
             </div>
-
             <div class="project-item">
               <strong class="energy">Energy</strong>
               <div>Solutions énergétiques adaptées, innovation locale, nexus climat-énergie et approches de résilience.</div>
@@ -649,7 +1074,7 @@
           </div>
         </div>
 
-        <div class="feature-box">
+        <div class="feature-box reveal">
           <h4>Pourquoi travailler avec Great Lakes Nexus</h4>
           <ul>
             <li>Approche intersectorielle Water–Food–Energy.</li>
@@ -665,7 +1090,7 @@
 
   <section class="section section-white" id="projects">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <div>
           <div class="kicker">Programmes</div>
           <h3>Des initiatives construites à partir des besoins du terrain.</h3>
@@ -676,19 +1101,19 @@
       </div>
 
       <div class="cards-3">
-        <article class="card service-food">
+        <article class="card service-food reveal">
           <div class="tag">Urban agriculture</div>
           <h4>Urban Oasis</h4>
           <p>Réinvention de l’agriculture urbaine à Goma à travers l’optimisation des espaces urbains sous-utilisés pour soutenir les communautés locales et les personnes déplacées internes.</p>
         </article>
 
-        <article class="card service-food">
+        <article class="card service-food reveal">
           <div class="tag">Food security</div>
           <h4>Formation en culture de champignons</h4>
           <p>Formation théorique et pratique destinée aux jeunes et aux femmes pour promouvoir la nutrition, la sécurité alimentaire et l’autonomisation économique.</p>
         </article>
 
-        <article class="card service-water">
+        <article class="card service-water reveal">
           <div class="tag">Community resilience</div>
           <h4>Approches intégrées locales</h4>
           <p>Développement d’initiatives locales combinant expertise, mobilisation des parties prenantes et solutions adaptées aux réalités communautaires.</p>
@@ -697,9 +1122,83 @@
     </div>
   </section>
 
-  <section class="section section-blue-soft" id="partners">
+  <section class="section section-blue-soft" id="impact">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Impact</div>
+          <h3>Nos objectifs stratégiques</h3>
+        </div>
+        <p>
+          Notre action s’articule autour d’objectifs concrets permettant d’articuler recherche, terrain, innovation communautaire et durabilité institutionnelle.
+        </p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-box reveal">
+          <div class="impact-icon">W</div>
+          <h4>Résilience hydrique</h4>
+          <p>Renforcer l’accès, la gestion et la durabilité des systèmes liés à l’eau.</p>
+        </div>
+        <div class="impact-box reveal">
+          <div class="impact-icon">F</div>
+          <h4>Sécurité alimentaire</h4>
+          <p>Améliorer la production, la nutrition et les systèmes alimentaires locaux.</p>
+        </div>
+        <div class="impact-box reveal">
+          <div class="impact-icon">E</div>
+          <h4>Transition énergétique</h4>
+          <p>Encourager les solutions énergétiques adaptées et les innovations résilientes.</p>
+        </div>
+        <div class="impact-box reveal">
+          <div class="impact-icon">R</div>
+          <h4>Capacités & données</h4>
+          <p>Produire des connaissances exploitables et renforcer les capacités locales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="governance">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker" style="color:#8ed2ff">Gouvernance</div>
+          <h3>Une gouvernance orientée responsabilité et crédibilité.</h3>
+        </div>
+        <p>
+          Cette section peut être enrichie par la suite avec les vrais profils, photos et fonctions officielles des membres du conseil ou de l’équipe de pilotage.
+        </p>
+      </div>
+
+      <div class="governance-grid">
+        <div class="governance-card reveal">
+          <div class="governance-photo"></div>
+          <p class="governance-name">Profil 1</p>
+          <div class="governance-role">Fonction institutionnelle</div>
+        </div>
+        <div class="governance-card reveal">
+          <div class="governance-photo"></div>
+          <p class="governance-name">Profil 2</p>
+          <div class="governance-role">Fonction institutionnelle</div>
+        </div>
+        <div class="governance-card reveal">
+          <div class="governance-photo"></div>
+          <p class="governance-name">Profil 3</p>
+          <div class="governance-role">Fonction institutionnelle</div>
+        </div>
+        <div class="governance-card reveal">
+          <div class="governance-photo"></div>
+          <p class="governance-name">Profil 4</p>
+          <div class="governance-role">Fonction institutionnelle</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white" id="partners">
+    <div class="container">
+      <div class="section-head reveal">
         <div>
           <div class="kicker">Partenaires</div>
           <h3>Des partenariats académiques et institutionnels au service d’un impact durable.</h3>
@@ -710,52 +1209,146 @@
       </div>
 
       <div class="logos">
-        <a class="partner-card" href="https://www.unigom.ac.cd/fr/home" target="_blank" rel="noopener noreferrer">
+        <a class="partner-card reveal" href="https://www.unigom.ac.cd/fr/home" target="_blank" rel="noopener noreferrer">
           <img src="https://unigom.ac.cd/img/logo/lg1.png" alt="Logo UNIGOM">
           <h5>UNIGOM</h5>
           <span>Université de Goma</span>
         </a>
 
-        <a class="partner-card" href="https://africareconciled.com/" target="_blank" rel="noopener noreferrer">
+        <a class="partner-card reveal" href="https://africareconciled.com/" target="_blank" rel="noopener noreferrer">
           <img src="https://africareconciled.com/wp-content/uploads/2022/09/Logo-AR-New.png" alt="Logo Africa Reconciled">
           <h5>Africa Reconciled</h5>
-          <span>Organisation engagée dans la paix, la réconciliation et le leadership transformationnel</span>
+          <span>Organisation engagée dans la paix, la réconciliation et le leadership transformationnel.</span>
         </a>
 
-        <a class="partner-card" href="https://creds-drc.org/" target="_blank" rel="noopener noreferrer">
+        <a class="partner-card reveal" href="https://creds-drc.org/" target="_blank" rel="noopener noreferrer">
           <img src="https://creds-drc.org/uploads/site/logo_1765898615_LOGO.jpg" alt="Logo CREDS">
           <h5>CREDS</h5>
-          <span>Centre de Recherche sur le Développement Durable et Société</span>
+          <span>Centre de Recherche sur le Développement Durable et Société.</span>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section section-white" id="contact">
+  <section class="section section-soft" id="contact">
     <div class="container">
-      <div class="cta">
-        <div>
-          <div class="kicker" style="color:#b8f0d2">Contact</div>
-          <h4>Discutons de votre projet, programme ou besoin d’appui technique.</h4>
+      <div class="contact-panel reveal">
+        <div class="contact-info">
+          <div class="kicker">Contact</div>
+          <h4>Nous sommes à votre écoute.</h4>
           <p>
             Pour une prise de contact rapide, utilisez WhatsApp. Nous pouvons ensuite structurer les échanges autour de votre besoin, de vos objectifs et de votre contexte d’intervention.
           </p>
+          <div class="contact-list">
+            <div>📍 Goma, Nord-Kivu, RDC</div>
+            <div>✉️ contact@greatlakesnexus.org</div>
+            <div>📞 +243 993 109 325</div>
+          </div>
         </div>
 
-        <div class="cta-actions">
-          <a class="btn btn-primary" href="https://wa.me/243993109325" target="_blank">Écrire sur WhatsApp</a>
-          <a class="btn btn-secondary" href="mailto:contact@greatlakesnexus.org">Préparer l’email institutionnel</a>
-        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); window.open('https://wa.me/243993109325','_blank');">
+          <div class="form-grid">
+            <input class="field" type="text" placeholder="Nom complet">
+            <input class="field" type="email" placeholder="Adresse e-mail">
+          </div>
+          <div class="form-grid">
+            <input class="field" type="text" placeholder="Organisation">
+            <select class="field">
+              <option>Type de demande</option>
+              <option>Consultance</option>
+              <option>Formation</option>
+              <option>Recherche</option>
+              <option>Partenariat</option>
+            </select>
+          </div>
+          <textarea class="field" placeholder="Décrivez brièvement votre besoin"></textarea>
+          <button class="btn btn-dark" type="submit">Initier la conversation</button>
+        </form>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 Great Lakes Nexus</div>
-      <div>Water · Food · Energy · Research · Community Solutions</div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>À propos de Great Lakes Nexus</h4>
+          <p>
+            Great Lakes Nexus est une structure dédiée au développement de solutions intégrées dans les domaines de l’eau, de l’alimentation, de l’énergie, de la recherche appliquée et du renforcement des capacités.
+          </p>
+          <a href="#mission" style="display:inline-block;margin-top:12px;font-weight:800;color:#8ed2ff;">Notre mission</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#services">Expertises</a></li>
+            <li><a href="#projects">Programmes</a></li>
+            <li><a href="#partners">Partenaires</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Informations</h4>
+          <span class="footer-label">Adresse institutionnelle</span>
+          <p>Goma, Nord-Kivu, RDC</p>
+          <span class="footer-label">Courriel officiel</span>
+          <p>contact@greatlakesnexus.org</p>
+          <span class="footer-label">Téléphone / WhatsApp</span>
+          <p>+243 993 109 325</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Nous suivre</h4>
+          <div class="socials">
+            <a class="social" href="#" aria-label="Facebook">f</a>
+            <a class="social" href="#" aria-label="X">X</a>
+            <a class="social" href="#" aria-label="LinkedIn">in</a>
+            <a class="social" href="#" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Great Lakes Nexus. Tous droits réservés.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Confidentialité</a>
+          <a href="#">Conditions</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <button class="back-top" id="backTop" aria-label="Retour en haut">↑</button>
+
+  <script>
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backTop.classList.add('show');
+      } else {
+        backTop.classList.remove('show');
+      }
+    });
+
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
