@@ -26,7 +26,6 @@
       --white:#ffffff;
       --shadow-sm:0 8px 20px rgba(7,24,39,.05);
       --shadow-md:0 18px 44px rgba(7,24,39,.10);
-      --radius:22px;
       --max:1220px;
     }
 
@@ -85,7 +84,7 @@
     }
 
     .nav-inner{
-      min-height:88px;
+      min-height:96px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -95,19 +94,19 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:16px;
       min-width:0;
     }
 
     .brand-logo{
-      width:64px;
-      height:64px;
+      width:88px;
+      height:88px;
       object-fit:contain;
-      background:#fff;
-      border-radius:18px;
+      background:rgba(255,255,255,.96);
+      border-radius:22px;
       border:1px solid rgba(20,128,184,.10);
-      padding:6px;
-      box-shadow:var(--shadow-sm);
+      padding:8px;
+      box-shadow:0 14px 30px rgba(7,24,39,.14);
       flex-shrink:0;
     }
 
@@ -117,7 +116,7 @@
 
     .brand-text h1{
       margin:0;
-      font-size:22px;
+      font-size:24px;
       line-height:1.02;
       letter-spacing:-0.03em;
       color:var(--navy);
@@ -130,7 +129,7 @@
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      max-width:320px;
+      max-width:360px;
     }
 
     .nav-links{
@@ -174,7 +173,7 @@
       min-height:46px;
       padding:0 18px;
       border-radius:14px;
-      color:#fff;
+      color:#fff !important;
       font-size:14px;
       font-weight:800;
       background:linear-gradient(135deg,var(--blue-2),var(--blue));
@@ -182,15 +181,16 @@
       transition:.25s ease;
     }
 
+    .nav-cta::after{display:none}
     .nav-cta:hover{transform:translateY(-2px)}
 
     .hero{
       position:relative;
       color:#fff;
+      min-height:100vh;
       background:
-        linear-gradient(120deg, rgba(7,24,39,.93) 0%, rgba(20,128,184,.80) 34%, rgba(47,143,95,.78) 68%, rgba(217,138,43,.64) 100%),
-        radial-gradient(circle at top left, rgba(255,255,255,.09), transparent 26%),
-        linear-gradient(135deg, #081a2b, #13334a);
+        linear-gradient(110deg, rgba(5,18,26,.82) 0%, rgba(8,35,26,.68) 38%, rgba(16,84,56,.48) 72%, rgba(216,138,45,.22) 100%),
+        url('hero-field.jpg') center center / cover no-repeat;
       overflow:hidden;
     }
 
@@ -225,36 +225,43 @@
       grid-template-columns:1.18fr .82fr;
       gap:34px;
       align-items:center;
-      padding:94px 0 84px;
+      padding:120px 0 88px;
+      position:relative;
+      z-index:2;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:9px 14px;
+      padding:10px 16px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.10);
+      backdrop-filter:blur(10px);
       font-size:12px;
       letter-spacing:.14em;
       text-transform:uppercase;
-      font-weight:800;
+      font-weight:900;
+      color:#ffffff;
     }
 
     .hero h2{
       margin:18px 0 18px;
-      font-size:clamp(38px, 6vw, 66px);
-      line-height:1.01;
-      letter-spacing:-0.05em;
+      font-size:clamp(42px, 7vw, 78px);
+      line-height:.96;
+      letter-spacing:-0.055em;
       max-width:860px;
+      text-shadow:0 10px 30px rgba(0,0,0,.18);
     }
 
     .hero .lead{
       margin:0;
       max-width:760px;
-      color:#edf6fb;
-      font-size:18px;
+      color:#f3f7f8;
+      font-size:20px;
+      line-height:1.6;
+      text-shadow:0 6px 18px rgba(0,0,0,.16);
     }
 
     .hero-actions{
@@ -312,12 +319,12 @@
     }
 
     .hero-panel{
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:26px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:28px;
       padding:24px;
-      backdrop-filter:blur(12px);
-      box-shadow:0 18px 40px rgba(7,24,39,.12);
+      backdrop-filter:blur(14px);
+      box-shadow:0 20px 40px rgba(0,0,0,.14);
     }
 
     .hero-panel h3{
@@ -325,7 +332,7 @@
       font-size:15px;
       letter-spacing:.08em;
       text-transform:uppercase;
-      color:#e6f2fb;
+      color:#f4fbfc;
     }
 
     .hero-metrics{
@@ -335,16 +342,16 @@
     }
 
     .metric{
-      background:rgba(255,255,255,.08);
-      border-radius:18px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
       padding:18px;
-      border:1px solid rgba(255,255,255,.06);
       transition:.25s ease;
     }
 
     .metric:hover{
-      transform:translateY(-3px);
-      background:rgba(255,255,255,.11);
+      transform:translateY(-4px);
+      background:rgba(255,255,255,.14);
     }
 
     .metric strong{
@@ -356,7 +363,7 @@
 
     .metric span{
       font-size:13px;
-      color:#e7f2fb;
+      color:#eef8f7;
     }
 
     .section{
@@ -608,9 +615,11 @@
     .governance-photo{
       aspect-ratio:1/1.1;
       border-radius:18px;
-      background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.06);
       margin-bottom:14px;
+      background-size:cover !important;
+      background-position:center !important;
+      background-repeat:no-repeat !important;
+      border:1px solid rgba(255,255,255,.06);
     }
 
     .governance-name{
@@ -826,7 +835,7 @@
       justify-content:center;
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.08);
-      color:#fff;
+      color:#fff !important;
       font-size:18px;
       font-weight:800;
       transition:.25s ease;
@@ -925,6 +934,11 @@
         grid-template-columns:1fr;
       }
 
+      .brand-logo{
+        width:72px;
+        height:72px;
+      }
+
       .brand-text p{max-width:220px}
       .section{padding:68px 0}
       .contact-panel{padding:26px}
@@ -972,43 +986,43 @@
     </div>
   </nav>
 
- <header class="hero">
-  <div class="container hero-grid">
-    <div class="reveal visible">
-      <div class="eyebrow">Climate adaptation on the move · Great Lakes Nexus</div>
-      <h2>Des solutions communautaires et institutionnelles pour l’eau, l’alimentation et l’énergie durables.</h2>
-      <p class="lead">
-        Great Lakes Nexus agit au plus près du terrain pour accompagner les communautés, organisations, universités, centres de recherche et partenaires de développement à travers la consultance, la recherche appliquée et le renforcement des capacités.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://wa.me/243993109325" target="_blank">Contacter l’équipe</a>
-        <a class="btn btn-secondary" href="#mission">Découvrir notre mission</a>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="reveal visible">
+        <div class="eyebrow">Climate adaptation on the move · Great Lakes Nexus</div>
+        <h2>Des solutions communautaires et institutionnelles pour l’eau, l’alimentation et l’énergie durables.</h2>
+        <p class="lead">
+          Great Lakes Nexus agit au plus près du terrain pour accompagner les communautés, organisations, universités, centres de recherche et partenaires de développement à travers la consultance, la recherche appliquée et le renforcement des capacités.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/243993109325" target="_blank">Contacter l’équipe</a>
+          <a class="btn btn-secondary" href="#mission">Découvrir notre mission</a>
+        </div>
       </div>
-    </div>
 
-    <aside class="hero-panel reveal visible">
-      <h3>Axes d’intervention</h3>
-      <div class="hero-metrics">
-        <div class="metric">
-          <strong>W</strong>
-          <span>Water systems, WASH et résilience hydrique.</span>
+      <aside class="hero-panel reveal visible">
+        <h3>Axes d’intervention</h3>
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>W</strong>
+            <span>Water systems, WASH et résilience hydrique.</span>
+          </div>
+          <div class="metric">
+            <strong>F</strong>
+            <span>Sécurité alimentaire, agriculture urbaine et nutrition.</span>
+          </div>
+          <div class="metric">
+            <strong>E</strong>
+            <span>Énergie, innovation locale et adaptation climatique.</span>
+          </div>
+          <div class="metric">
+            <strong>R</strong>
+            <span>Recherche appliquée, données et formation.</span>
+          </div>
         </div>
-        <div class="metric">
-          <strong>F</strong>
-          <span>Sécurité alimentaire, agriculture urbaine et nutrition.</span>
-        </div>
-        <div class="metric">
-          <strong>E</strong>
-          <span>Énergie, innovation locale et adaptation climatique.</span>
-        </div>
-        <div class="metric">
-          <strong>R</strong>
-          <span>Recherche appliquée, données et formation.</span>
-        </div>
-      </div>
-    </aside>
-  </div>
-</header>
+      </aside>
+    </div>
+  </header>
 
   <section class="section section-white" id="mission">
     <div class="container">
@@ -1018,7 +1032,7 @@
           <h3>Une structure orientée impact, ancrée dans les réalités locales.</h3>
         </div>
         <p>
-          Nous développons des réponses intégrées aux défis communautaires en combinant expertise technique, innovation adaptée au contexte, co-construction avec les parties prenantes et approche fondée sur des preuves.
+          Great Lakes Nexus est une structure spécialisée en consultance, recherche appliquée et renforcement des capacités, intervenant dans les domaines de l’eau, de l’alimentation et de l’énergie, au service des communautés, institutions et partenaires de développement de la région des Grands Lacs.
         </p>
       </div>
 
@@ -1096,7 +1110,7 @@
           <h3>Des initiatives construites à partir des besoins du terrain.</h3>
         </div>
         <p>
-          Nos programmes visent à transformer les contraintes locales en opportunités de résilience, d’autonomisation et d’innovation durable.
+          Notre programme phare met l’accent sur l’agriculture urbaine, la résilience communautaire et le renforcement des capacités dans un contexte de fragilité.
         </p>
       </div>
 
@@ -1104,19 +1118,19 @@
         <article class="card service-food reveal">
           <div class="tag">Urban agriculture</div>
           <h4>Urban Oasis</h4>
-          <p>Réinvention de l’agriculture urbaine à Goma à travers l’optimisation des espaces urbains sous-utilisés pour soutenir les communautés locales et les personnes déplacées internes.</p>
-        </article>
-
-        <article class="card service-food reveal">
-          <div class="tag">Food security</div>
-          <h4>Formation en culture de champignons</h4>
-          <p>Formation théorique et pratique destinée aux jeunes et aux femmes pour promouvoir la nutrition, la sécurité alimentaire et l’autonomisation économique.</p>
+          <p>Urban Oasis transforme les espaces urbains sous-utilisés en systèmes de production alimentaire durables, au bénéfice des communautés locales et des personnes déplacées à Goma.</p>
         </article>
 
         <article class="card service-water reveal">
           <div class="tag">Community resilience</div>
-          <h4>Approches intégrées locales</h4>
-          <p>Développement d’initiatives locales combinant expertise, mobilisation des parties prenantes et solutions adaptées aux réalités communautaires.</p>
+          <h4>Approche intégrée</h4>
+          <p>Le projet relie agriculture urbaine, innovation locale, mobilisation communautaire et résilience territoriale dans un contexte de fragilité.</p>
+        </article>
+
+        <article class="card service-energy reveal">
+          <div class="tag">Capacity building</div>
+          <h4>Renforcement des capacités</h4>
+          <p>Great Lakes Nexus accompagne les communautés à travers l’apprentissage pratique, l’innovation locale et le développement de solutions durables.</p>
         </article>
       </div>
     </div>
@@ -1163,34 +1177,37 @@
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <div class="kicker" style="color:#8ed2ff">Gouvernance</div>
-          <h3>Une gouvernance orientée responsabilité et crédibilité.</h3>
+          <div class="kicker" style="color:#8ed2ff">Équipe</div>
+          <h3>Une équipe engagée au service des communautés et des institutions.</h3>
         </div>
         <p>
-          Cette section peut être enrichie par la suite avec les vrais profils, photos et fonctions officielles des membres du conseil ou de l’équipe de pilotage.
+          Great Lakes Nexus s’appuie sur une équipe aux compétences complémentaires dans les domaines de la stratégie, du WASH, des systèmes alimentaires et de la mobilisation communautaire.
         </p>
       </div>
 
       <div class="governance-grid">
         <div class="governance-card reveal">
-          <div class="governance-photo"></div>
-          <p class="governance-name">Profil 1</p>
-          <div class="governance-role">Fonction institutionnelle</div>
+          <div class="governance-photo" style="background:url('team2.jpg') center/cover no-repeat;"></div>
+          <p class="governance-name">Mulumba Jonathan</p>
+          <div class="governance-role">Directeur Exécutif – Stratégie et Partenariats</div>
         </div>
+
         <div class="governance-card reveal">
-          <div class="governance-photo"></div>
-          <p class="governance-name">Profil 2</p>
-          <div class="governance-role">Fonction institutionnelle</div>
+          <div class="governance-photo" style="background:url('team2.jpg') center/cover no-repeat;"></div>
+          <p class="governance-name">Byemba Leader</p>
+          <div class="governance-role">Spécialiste WASH</div>
         </div>
+
         <div class="governance-card reveal">
-          <div class="governance-photo"></div>
-          <p class="governance-name">Profil 3</p>
-          <div class="governance-role">Fonction institutionnelle</div>
+          <div class="governance-photo" style="background:url('team3.jpg') center/cover no-repeat;"></div>
+          <p class="governance-name">Marianna Wase</p>
+          <div class="governance-role">Spécialiste Systèmes Alimentaires et Nutrition</div>
         </div>
+
         <div class="governance-card reveal">
-          <div class="governance-photo"></div>
-          <p class="governance-name">Profil 4</p>
-          <div class="governance-role">Fonction institutionnelle</div>
+          <div class="governance-photo" style="background:url('team3.jpg') center/cover no-repeat;"></div>
+          <p class="governance-name">Wimba Happy</p>
+          <div class="governance-role">Chargée de Mobilisation Communautaire</div>
         </div>
       </div>
     </div>
@@ -1304,10 +1321,7 @@
         <div class="footer-col">
           <h4>Nous suivre</h4>
           <div class="socials">
-            <a class="social" href="#" aria-label="Facebook">f</a>
-            <a class="social" href="#" aria-label="X">X</a>
-            <a class="social" href="#" aria-label="LinkedIn">in</a>
-            <a class="social" href="#" aria-label="Instagram">◎</a>
+            <a class="social" href="https://www.linkedin.com/company/great-lakes-nexus/posts/?feedView=all&viewAsMember=true" target="_blank" aria-label="LinkedIn">in</a>
           </div>
         </div>
       </div>
